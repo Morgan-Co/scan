@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+	--foreground-rgb: 0, 0, 0;
+	--background-start-rgb: 214, 219, 220;
+	--background-end-rgb: 255, 255, 255;
+}
+
+* {
+	// outline: 1px solid #000;
+}
+
+body {
+	background: #ffffff;
+}
+
+@layer utilities {
+	.text-balance {
+		text-wrap: balance;
+	}
+}
+
+.mainContainer {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1320px;
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 20px;
+}
+
+.footerItem {
+	text-align: end;
+	color: #ffffff;
+}
+
+.cardList {
+	li {
+		display: flex;
+		font-size: 18px;
+		line-height: 21px;
+		&::before {
+			content: '';
+			display: block;
+			margin-right: 8px;
+			width: 20px;
+			height: 20px;
+			background-image: url('../../public/check.png');
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 5px;
+		}
+	}
+}
