@@ -1,4 +1,5 @@
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+
 
 export enum EnumTokens {
 	'ACCESS_TOKEN' = 'accessToken',
@@ -12,7 +13,7 @@ export const getAccessToken = () => {
 
 export const saveTokenStorage = (accessToken: string) => {
 	Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
-		domain: 'localhost',
+		domain: 'scan-sigma.vercel.app',
 		sameSite: 'strict',
 		expires: 1
 	})

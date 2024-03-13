@@ -5,7 +5,6 @@ import { axiosClassic } from '@/api/interseptors'
 import { removeFromStorage, saveTokenStorage } from './auth-token.service'
 
 class AuthService {
-	// BASE_URL = 'gateway.scan-interfax.ru'
 	async main(data: IAuthForm) {
 		try {
 			const response = await axiosClassic.post(

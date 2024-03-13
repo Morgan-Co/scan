@@ -52,6 +52,6 @@ axiosWithAuth.interceptors.request.use(config => {
 // 		}
 // 		throw error
 // 	}
-// )
+)
 
 export { axiosClassic, axiosWithAuth }
