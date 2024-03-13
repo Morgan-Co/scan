@@ -2,9 +2,9 @@ import axios, { CreateAxiosDefaults } from 'axios';
 
 
 
-import { errorCatch } from './error';
+// import { errorCatch } from './error';
 import { getAccessToken, removeFromStorage } from '@/services/auth-token.service';
-import { authService } from '@/services/auth.service';
+// import { authService } from '@/services/auth.service';
 
 
 
@@ -52,6 +52,6 @@ axiosWithAuth.interceptors.request.use(config => {
 // 		}
 // 		throw error
 // 	}
-)
+// )
 
 export { axiosClassic, axiosWithAuth }
