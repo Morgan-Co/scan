@@ -30,9 +30,9 @@ export default function Results() {
 
 	return (
 		<div>
-			<section className={`flex`}>
+			<section className={`flex flex-wrap justify-between`}>
 				<div>
-					<Heading>Ищем. Скоро будут результаты</Heading>
+					<Heading className={`max-w-[509px]`}>Ищем. Скоро будут результаты</Heading>
 					<p>Поиск может занять некоторое время, просим сохранять терпение.</p>
 				</div>
 				<Image
@@ -48,10 +48,10 @@ export default function Results() {
 					Найдено вариантов: {data?.histograms.length}
 				</span>
 				<div
-					className={`border-[2px] border-primary-turquoise h-[158px] rounded-[10px] flex w-[1260px] ml-[30px]`}
+					className={`border-[2px] border-primary-turquoise h-[158px] rounded-[10px] flex sm:flex-row flex-col max-w-[1260px] sm:ml-[30px]`}
 				>
 					<div
-						className={`w-[133px] bg-primary-turquoise h-full flex flex-col justify-center items-center gap-[26px]`}
+						className={`sm:w-[133px] w-full bg-primary-turquoise sm:h-full h-[75px] flex sm:flex-col flex-row justify-center items-center gap-[26px]`}
 					>
 						<p className={`font-medium text-[20px] text-white w-[78px]`}>
 							Период
@@ -63,13 +63,13 @@ export default function Results() {
 							Риски
 						</p>
 					</div>
-					<Carousel className={`w-full h-full`}>
-						<CarouselContent className={`m-0 h-[156px] items-center`}>
+					<Carousel className={`w-full sm:h-full h-fit`}>
+						<CarouselContent className={`m-0 sm:h-[156px] h-[73px] items-center`}>
 							{histograms ? (
 								histograms.map(item => (
 									<CarouselItem
 										key={`${item.data[0].date} ${item.data[0].value}`}
-										className={`w-[137px] h-[124px] border-r-[2px] border-[#949494] basis-1/6 flex flex-col items-center justify-between`}
+										className={`sm:w-[137px] px-5 sm:h-[124px] sm:border-r-[2px] border-[#949494] sm:basis-1/6 flex sm:flex-col flex-row items-center justify-between`}
 									>
 										<div>{format(parseISO(item.data[0].date), 'dd.MM.y')}</div>
 										<div>{item.data[0].value}</div>
@@ -83,8 +83,8 @@ export default function Results() {
 								</div>
 							)}
 						</CarouselContent>
-						<CarouselPrevious className={`-left-[165px]`} />
-						<CarouselNext />
+						<CarouselPrevious className={`-left-[165px] sm:block hidden`} />
+						<CarouselNext className={`sm:block hidden`} />
 					</Carousel>
 				</div>
 			</section>

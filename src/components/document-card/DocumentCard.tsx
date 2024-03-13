@@ -48,7 +48,7 @@ const DocumentCard = ({
 				<div className={`flex items-end justify-between`}>
 					<Link
 						href={url}
-						className={`w-[223px] h-[46.54px] bg-secondary-turquoise inline-flex justify-center items-center rounded-[5px]`}
+						className={`sm:w-[223px] w-[195px] sm:h-[46.54px] h-[40.7px] bg-secondary-turquoise inline-flex justify-center items-center rounded-[5px]`}
 					>
 						Читать в источнике
 					</Link>

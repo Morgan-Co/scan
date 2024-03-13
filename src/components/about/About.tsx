@@ -14,14 +14,16 @@ import Heading from '../ui/headings/Heading'
 const About = () => {
 	return (
 		<section className={`mb-[70px]`}>
-			<Heading className={`mb-[70px] text-[45px]`}>Почему именно мы</Heading>
+			<Heading className={`sm:mb-[70px] mb-[32px] sm:text-[45px] text-[38px] leading-[40px] sm:leading-[54px]`}>Почему именно мы</Heading>
 			<div className={`flex justify-center`}>
-				<Carousel>
-					<CarouselContent className={`m-0 gap-[40px] h-[235px] items-center`}>
+				<Carousel className={`max-w-full`}>
+					<CarouselContent
+						className={`!max-w-[1200px] m-0 gap-[40px] h-[235px] items-center`}
+					>
 						{aboutCards.map(item => (
 							<CarouselItem
 								key={item.text}
-								className={`max-w-[400px] h-[225px] basis-1/3 shadow-main rounded-[10px] p-[22px_0_0_19px]`}
+								className={`max-w-[400px] h-[225px] sm:basis-1/3 shadow-main rounded-[10px] p-[22px_0_0_19px]`}
 							>
 								<div className={`w-fit h-fit`}>
 									<Image

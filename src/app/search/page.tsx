@@ -24,17 +24,17 @@ export default function Search() {
 			<Image
 				src={SearchImage}
 				alt='Search Image'
-				className={`absolute bottom-0 -right-[150px]`}
+				className={`sm:absolute bottom-0 -right-[150px] sm:w-fit w-full mt-[24px] sm:mt-0`}
 			/>
 			<Image
 				src={Document}
 				alt='Search Image'
-				className={`absolute top-[9%] right-[20%]`}
+				className={`absolute top-[9%] right-[20%] hidden sm:block`}
 			/>
 			<Image
 				src={Folders}
 				alt='Search Image'
-				className={`absolute top-[10%] -right-[150px]`}
+				className={`absolute top-[10%] -right-[150px] hidden sm:block`}
 			/>
 		</section>
 	)

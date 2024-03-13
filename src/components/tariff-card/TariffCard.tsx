@@ -22,15 +22,15 @@ const TariffCard = ({
 				style={{
 					borderColor: bg,
 					backgroundColor: bg,
-					backgroundImage: `url(${image})`,
-					backgroundPosition: 'top 30% right 0'
+					backgroundImage: `url(${image})`
+					// backgroundPosition: 'top 30% right 0'
 				}}
-				className={`border-b-[2px] pt-[30px] pl-[30px] h-[132px] bg-no-repeat`}
+				className={`border-b-[2px] pt-[30px] sm:pl-[30px] pl-[24px] h-[132px] sm:bg-[length:92px_83px] bg-[length:59px_53px] bg-no-repeat bg-[top_10%_right_20px] sm:bg-[top_30%_right_0px]`}
 			>
 				<div>
 					<CardHeading
 						style={{ color }}
-						className={`font-medium text-black text-[30px] leading-[36px] mb-[10px]`}
+						className={`font-medium text-black sm:text-[30px] leading-[36px] mb-[10px] text-[20px]`}
 					>
 						{title}
 					</CardHeading>
@@ -43,7 +43,7 @@ const TariffCard = ({
 				</div>
 			</div>
 			<div
-				className={`flex flex-col justify-between pl-[30px] pb-[24px] pt-[33px] h-[75%]`}
+				className={`flex flex-col justify-between p-[20px_24px_31px_24px] sm:p-[33px_0px_24px_30px] h-[75%]`}
 			>
 				<div>
 					<div className={`flex gap-[19px] mb-[10px]`}>
@@ -64,7 +64,11 @@ const TariffCard = ({
 						))}
 					</ul>
 				</div>
-				<Button className={`w-[355px]`}>Перейти в личный кабинет</Button>
+				<Button
+					className={`sm:max-w-[355px] w-full font-normal text-[18px] sm:-text-[20px]`}
+				>
+					Перейти в личный кабинет
+				</Button>
 			</div>
 		</div>
 	)

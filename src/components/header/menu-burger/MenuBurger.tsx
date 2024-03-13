@@ -26,7 +26,7 @@ const MenuBurger = () => {
 				/>
 			</Link>
 			<div
-				className={`${isOpen ? 'translate-x-0' : 'translate-x-[8000px]'} transition-transform absolute top-0 left-0 w-full h-[494px] bg-primary-turquoise flex items-center flex-col px-[20px]`}
+				className={`${isOpen ? 'translate-x-0' : 'translate-x-[8000px]'} transition-transform fixed top-0 left-0 w-full h-[494px] bg-primary-turquoise flex items-center flex-col px-[20px] z-20`}
 			>
 				<div className={`flex w-full justify-between h-[92px]`}>
 					<Link href={SITE_PAGES.HOME}>

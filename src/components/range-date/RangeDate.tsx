@@ -70,20 +70,20 @@ const RangeDate = ({
 		<>
 			<Popover>
 				<PopoverTrigger asChild>
-					<div className={`flex gap-[20px]`}>
+					<div className={`flex gap-[20px] flex-wrap`}>
 						<input
 							type='text'
 							placeholder='Дата начала'
 							value={fromValue}
 							onChange={handleFromChange}
-							className={`flex h-[43px] max-w-[176px] rounded-[5px] border-[2px] border-[#C7C7C7] py-[12px] px-[19px] text-base`}
+							className={`flex h-[43px] sm:max-w-[176px] w-full rounded-[5px] border-[2px] border-[#C7C7C7] py-[12px] px-[19px] text-base`}
 						/>
 						<input
 							type='text'
 							placeholder='Дата конца'
 							value={toValue}
 							onChange={handleToChange}
-							className={`flex h-[43px] max-w-[176px] rounded-[5px] border-[2px] border-[#C7C7C7] py-[12px] px-[19px] text-base`}
+							className={`flex h-[43px] sm:max-w-[176px] w-full rounded-[5px] border-[2px] border-[#C7C7C7] py-[12px] px-[19px] text-base`}
 						/>
 					</div>
 				</PopoverTrigger>

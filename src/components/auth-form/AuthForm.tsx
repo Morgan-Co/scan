@@ -7,6 +7,8 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { socials } from '@/constants/socials.constants'
+
 import { IAuthForm } from '@/types/auth.types'
 
 import { Button } from '../ui/buttons/Button'
@@ -78,7 +80,7 @@ const AuthForm = ({ type }: { type: 'login' | 'register' }) => {
 							value: true
 						}
 					})}
-					defaultValue={'sf_student1'}
+					defaultValue={'sf_student2'}
 				/>
 				<span
 					className={`absolute top-[77px] text-[14px] text-red w-full flex justify-center`}
@@ -98,7 +100,7 @@ const AuthForm = ({ type }: { type: 'login' | 'register' }) => {
 							value: true
 						}
 					})}
-					defaultValue={'4i2385j'}
+					defaultValue={'lV8xjCH'}
 				/>
 				<span
 					className={`absolute top-[80px] text-[14px] text-red w-full flex justify-center`}
@@ -109,7 +111,7 @@ const AuthForm = ({ type }: { type: 'login' | 'register' }) => {
 			<div className={`relative mb-[20px]`}>
 				<Button
 					disabled={isDisabled}
-					className={`w-full `}
+					className={`w-full`}
 				>
 					{type === 'login' ? 'Войти' : 'Создать'}
 				</Button>
@@ -129,33 +131,18 @@ const AuthForm = ({ type }: { type: 'login' | 'register' }) => {
 				Войти через:
 			</span>
 			<div className={`flex gap-[10px]`}>
-				<button
-					type='button'
-					className={`flex justify-center items-center w-[96px] h-[31px] rounded-[3px] border border-light-blue hover:bg-light-blue/10`}
-				>
-					<Image
-						src={Google}
-						alt='google'
-					/>
-				</button>
-				<button
-					type='button'
-					className={`flex justify-center items-center w-[96px] h-[31px] rounded-[3px] border border-light-blue hover:bg-light-blue/10`}
-				>
-					<Image
-						src={Facebook}
-						alt='google'
-					/>
-				</button>
-				<button
-					type='button'
-					className={`flex justify-center items-center w-[96px] h-[31px] rounded-[3px] border border-light-blue hover:bg-light-blue/10`}
-				>
-					<Image
-						src={Yandex}
-						alt='google'
-					/>
-				</button>
+				{socials.map(item => (
+					<button
+						key={item.url}
+						type='button'
+						className={`flex justify-center items-center max-w-[96px] w-full h-[31px] rounded-[3px] border border-light-blue hover:bg-light-blue/10`}
+					>
+						<Image
+							src={item.img}
+							alt={item.url}
+						/>
+					</button>
+				))}
 			</div>
 		</form>
 	)

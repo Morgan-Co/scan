@@ -9,32 +9,33 @@ import Lock from '../../../public/lock.png'
 
 export default function Auth() {
 	return (
-		<section className={`flex mt-[69px] mb-[80px]`}>
+		<section className={`flex sm:flex-nowrap flex-wrap mt-[69px] mb-[80px]`}>
 			<div>
-				<Heading className={`max-w-[817px]`}>
+				<Heading
+					className={`max-w-[817px] text-[22px] sm:text-[40px] leading-[30px] tracking-[2px] sm:leading-[48px] mb-[45px] sm:mb-0`}
+				>
 					Для оформления подписки на тариф, необходимо авторизоваться.
 				</Heading>
 				<Image
 					src={AuthImage}
 					alt='Characters'
-					className={`ml-[112px] mt-[13px]`}
+					className={`ml-[112px] mt-[13px] sm:block hidden`}
 				/>
 			</div>
-			<div>
-				<Tabs
-					defaultValue='login'
-					className={`w-[429px] h-[523px] rounded-[10px] shadow-main px-[25px] pt-[25px] bg-white relative`}
-				>
-					<TabsList className={`w-full flex justify-between mb-[40px]`}>
+			<Tabs
+				defaultValue='login'
+				className={`rounded-[10px] shadow-main p-[25px_25px_25px_39px] bg-white relative box-border max-w-[429px] w-full`}
+			>
+				<TabsList className={`w-full flex mb-[40px] gap-[15px]`}>
 						<TabsTrigger
 							value='login'
-							className={`w-[151px]`}
+							className={`max-w-[151px] w-full`}
 						>
 							Войти
 						</TabsTrigger>
 						<TabsTrigger
 							value='auth'
-							className={`w-[213px]`}
+							className={`max-w-[213px] w-full`}
 						>
 							Зарегистрироваться
 						</TabsTrigger>
@@ -48,10 +49,9 @@ export default function Auth() {
 					<Image
 						src={Lock}
 						alt='Lock'
-						className={`absolute -top-14 -left-14`}
+						className={`absolute -top-14 -left-14 sm:block hidden`}
 					/>
-				</Tabs>
-			</div>
+			</Tabs>
 		</section>
 	)
 }

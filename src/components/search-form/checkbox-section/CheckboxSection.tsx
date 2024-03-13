@@ -28,7 +28,7 @@ const CheckboxSection = ({
 		})
 	}, [isDisabled, innValue, limitValue])
 	return (
-		<div className={`grid grid-rows-[auto_auto_35px]`}>
+		<div className={`hidden grid-rows-[auto_auto_35px] sm:grid`}>
 			<div>
 				{searchTerms.map(item => (
 					<CheckboxItem

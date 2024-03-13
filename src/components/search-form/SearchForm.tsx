@@ -41,9 +41,10 @@ const SearchForm = () => {
 	return (
 		<form
 			onSubmit={handleSubmit(onSubmit)}
-			className={`flex justify-between  w-[872px] h-[543px] rounded-[10px] shadow-main mt-[47px] box-border p-[21px_39px_32px_44px] z-10 relative bg-white`}
+			className={`flex justify-between  max-w-[872px] sm:h-[543px] rounded-[10px] shadow-main mt-[47px] box-border p-[21px_39px_32px_44px] z-10 relative bg-white`}
 		>
 			<InputSection
+				watch={watch}
 				register={register}
 				setValue={setValue}
 				errors={errors}
