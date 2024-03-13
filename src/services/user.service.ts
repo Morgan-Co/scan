@@ -2,8 +2,12 @@ import { axiosWithAuth } from '@/api/interseptors'
 
 class UserService {
 	async getProfile() {
-		const response = await axiosWithAuth.get('/api/v1/account/info')
-		return response.data
+		try {
+			const response = await axiosWithAuth.get('/api/v1/account/info')
+			return { data: response.data }
+		} catch (error) {
+			return { error }
+		}
 	}
 }
 

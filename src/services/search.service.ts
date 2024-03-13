@@ -11,6 +11,8 @@ class SearchService {
 	BASE_URL = 'gateway.scan-interfax.ru'
 
 	async makeRequest(data: ISearchRequest) {
+		console.log(data);
+		
 		const request: ISearchRequestData = {
 			intervalType: 'month',
 			histogramTypes: ['totalDocuments', 'riskFactors'],
@@ -38,9 +40,9 @@ class SearchService {
 			sortType: 'sourceInfluence',
 			sortDirectionType: 'desc',
 			attributeFilters: {
-				excludeTechNews: data.includeTechNews === false,
-				excludeAnnouncements: data.includeAnnouncements === false,
-				excludeDigests: data.includeDigests === false
+				excludeTechNews: data.includeTechNews === true,
+				excludeAnnouncements: data.includeAnnouncements === true,
+				excludeDigests: data.includeDigests === true
 			}
 		}
 		console.log(request)
@@ -52,13 +54,11 @@ class SearchService {
 
 		const objectSearch: { data: { items: { encodedId: string }[] } } =
 			await axiosWithAuth.post('/api/v1/objectsearch', request)
-		console.log(objectSearch)
 
 		const objectSearchIds: any[] = []
 		objectSearch.data.items.map(item => {
 			objectSearchIds.push(item.encodedId)
 		})
-		console.log(objectSearchIds)
 
 		const documents = await axiosWithAuth.post('/api/v1/documents', {
 			ids: objectSearchIds

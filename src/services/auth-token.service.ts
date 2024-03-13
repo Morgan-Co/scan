@@ -14,11 +14,13 @@ export const getAccessToken = () => {
 export const saveTokenStorage = (accessToken: string) => {
 	Cookies.set(EnumTokens.ACCESS_TOKEN, accessToken, {
 		domain: 'scan-sigma.vercel.app',
+		// domain: 'localhost',
 		sameSite: 'strict',
 		expires: 1
 	})
 }
 
-export const removeFromStorage = () => {
+export const removeFromStorage = async () => {
+
 	Cookies.remove(EnumTokens.ACCESS_TOKEN)
 }

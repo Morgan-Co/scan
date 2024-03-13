@@ -1,15 +1,18 @@
 'use client'
 
 import { useMutation } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { ISearchRequest } from '@/types/search.types'
 
 import CheckboxSection from './checkbox-section/CheckboxSection'
 import InputSection from './input-section/InputSection'
+import { SITE_PAGES } from '@/configs/pages-url.config'
 import { searchService } from '@/services/search.service'
-import { ISearchRequest } from '@/types/search.types'
 
 const SearchForm = () => {
+	const { push } = useRouter()
 	const {
 		register,
 		handleSubmit,
@@ -24,9 +27,11 @@ const SearchForm = () => {
 			const response = await searchService.makeRequest(queryData)
 			localStorage.setItem('responseData', JSON.stringify(response))
 			console.log(response)
+		},
+		onSuccess: () => {
+			push(SITE_PAGES.RESULTS)
 		}
 	})
-
 
 	const onSubmit: SubmitHandler<ISearchRequest> = async data => {
 		if (!data.tonality) data.tonality = 'any'

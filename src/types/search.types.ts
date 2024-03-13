@@ -54,7 +54,7 @@ export interface ISearchResponseData {
 			value: number
 		}[]
 		histogramType: string
-	}
+	}[]
 }
 
 export interface IDocumentCard {

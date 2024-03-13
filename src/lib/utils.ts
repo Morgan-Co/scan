@@ -56,6 +56,12 @@ export function validateInn(
 	return result
 }
 
+const getFirstImageUrl = (decodedContent: string) => {
+	const images = decodedContent.match(/<img src="(.*?)"/m)
+
+	return images ? images[1] : null
+}
+
 const decodeMarkup = (markup: string) => {
 	return decode(markup)
 }
@@ -66,7 +72,8 @@ const removeTags = (content: string) => {
 
 export const getContent = (markup: string) => {
 	const decodedContent = decodeMarkup(markup)
+	const imgUrl = getFirstImageUrl(decodedContent)
 	const content = removeTags(decodedContent).slice(0, 700) + '...'
 
-	return { content }
+	return { content, imgUrl }
 }

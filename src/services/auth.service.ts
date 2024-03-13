@@ -5,14 +5,9 @@ import { axiosClassic } from '@/api/interseptors'
 import { removeFromStorage, saveTokenStorage } from './auth-token.service'
 
 class AuthService {
-	async main(data: IAuthForm) {
+	async login(data: IAuthForm) {
 		try {
-			const response = await axiosClassic.post(
-				`/api/v1/account/login`,
-				data
-			)
-			console.log(response);
-			
+			const response = await axiosClassic.post(`/api/v1/account/login`, data)
 
 			if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
 			return response.data
@@ -22,21 +17,6 @@ class AuthService {
 			}
 		}
 	}
-	// async getNewTokens() {
-	// 	const response = await axiosClassic.post('/auth/login/access-token')
-
-	// 	if (response.data.accessToken) saveTokenStorage(response.data.accessToken)
-
-	// 	return response.data
-	// }
-
-	// async logout() {
-	// 	const response = await axiosClassic.post<boolean>('/auth/logout')
-
-	// 	if (response.data) removeFromStorage()
-
-	// 	return response.data
-	// }
 }
 
 export const authService = new AuthService()

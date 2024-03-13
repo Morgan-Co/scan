@@ -7,6 +7,7 @@ import React from 'react'
 import { IDocumentCard } from '@/types/search.types'
 
 import { getContent } from '@/lib/utils'
+import Image from 'next/image'
 
 const DocumentCard = ({
 	attributes: { wordCount },
@@ -16,11 +17,11 @@ const DocumentCard = ({
 	url,
 	source: { name }
 }: IDocumentCard) => {
-	const { content } = getContent(markup)
+	const { content, imgUrl } = getContent(markup)
 
 	return (
 		<div
-			className={`w-[641px] rounded-[10px] shadow-main bg-white flex flex-col justify-center items-center p-[19px_30px_35.5px_30px] box-border`}
+			className={`max-w-[621px] rounded-[10px] shadow-main bg-white flex flex-col justify-center items-center p-[19px_25px_35.5px_25px] box-border`}
 		>
 			<div>
 				<div className={`flex gap-[14px] mb-[24px]`}>
@@ -36,11 +37,13 @@ const DocumentCard = ({
 				<div className={`mb-[14px]`}>
 					<h2 className={`font-medium text-[26px] leading-[31.5px]`}>{text}</h2>
 				</div>
-				{/* <Image
-					src={Test}
-					alt='Test'
-					className={`mb-[20px]`}
-				/> */}
+				{imgUrl && (
+					<Image
+						src={imgUrl}
+						alt='Test'
+						className={`mb-[20px]`}
+					/>
+				)}
 				<div className={`mb-[32px]`}>{content}</div>
 				<div className={`flex items-end justify-between`}>
 					<Link

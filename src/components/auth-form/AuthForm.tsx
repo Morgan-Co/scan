@@ -1,31 +1,43 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import { SubmitHandler, useForm } from 'react-hook-form';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
+import { IAuthForm } from '@/types/auth.types'
 
+import { Button } from '../ui/buttons/Button'
+import { Input } from '../ui/inputs/Input'
+import { Label } from '../ui/label'
 
-import { IAuthForm } from '@/types/auth.types';
-
-
-
-import { Button } from '../ui/buttons/Button';
-import { Input } from '../ui/inputs/Input';
-import { Label } from '../ui/label';
-
-
-
-import Facebook from '@/../../public/facebook.svg';
-import Google from '@/../../public/google.svg';
-import Yandex from '@/../../public/yandex.svg';
-import { SITE_PAGES } from '@/configs/pages-url.config';
-import { authService } from '@/services/auth.service';
-
+import Facebook from '@/../../public/facebook.svg'
+import Google from '@/../../public/google.svg'
+import Yandex from '@/../../public/yandex.svg'
+import { SITE_PAGES } from '@/configs/pages-url.config'
+import { authService } from '@/services/auth.service'
 
 const AuthForm = ({ type }: { type: 'login' | 'register' }) => {
+	const client = useQueryClient()
+	const { mutate: login } = useMutation({
+		mutationKey: ['login'],
+		mutationFn: async (data: IAuthForm) => {
+			const response = await authService.login(data)
+			if (response.message) {
+				setError('root', { message: response.message })
+				return
+			}
+			clearErrors()
+		},
+		onSuccess: () => {
+			push(SITE_PAGES.SEARCH)
+			client.invalidateQueries({
+				queryKey: ['user-profile']
+			})
+		}
+	})
 	const [isDisabled, setIsDisabled] = useState(false)
 	const { push } = useRouter()
 	const {
@@ -48,18 +60,10 @@ const AuthForm = ({ type }: { type: 'login' | 'register' }) => {
 			}
 			return true
 		})
-		console.log(isDisabled)
 	}, [isDisabled, loginValue, passwordValue])
 
 	const onSubmit: SubmitHandler<IAuthForm> = async data => {
-		const response = await authService.main(data)
-
-		if (response.message) {
-			setError('root', { message: response.message })
-			return
-		}
-		clearErrors()
-		push(SITE_PAGES.SEARCH)
+		login(data)
 	}
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
