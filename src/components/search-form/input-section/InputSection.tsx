@@ -104,8 +104,8 @@ const InputSection = ({
 					</SelectTrigger>
 					<SelectContent>
 						<SelectItem value='any'>Любая</SelectItem>
-						<SelectItem value='exact'>Точная</SelectItem>
-						<SelectItem value='different'>Разная</SelectItem>
+						<SelectItem value='negative'>Негативная</SelectItem>
+						<SelectItem value='positive'>Позитивная</SelectItem>
 					</SelectContent>
 				</Select>
 			</div>

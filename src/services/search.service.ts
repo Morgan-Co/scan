@@ -11,8 +11,8 @@ class SearchService {
 	BASE_URL = 'gateway.scan-interfax.ru'
 
 	async makeRequest(data: ISearchRequest) {
-		console.log(data);
-		
+		console.log(data)
+
 		const request: ISearchRequestData = {
 			intervalType: 'month',
 			histogramTypes: ['totalDocuments', 'riskFactors'],
@@ -31,7 +31,7 @@ class SearchService {
 						}
 					],
 					onlyMainRole: data.onlyMainRole === true,
-					tonality: data.tonality,
+					tonality: 'any',
 					onlyWithRiskFactors: data.onlyWithRiskFactors === true
 				}
 			},
